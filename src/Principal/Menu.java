@@ -31,7 +31,6 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        java_img = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         locacao = new javax.swing.JButton();
         devolucao = new javax.swing.JButton();
@@ -47,25 +46,12 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Swis721 BdOul BT", 0, 24)); // NOI18N
         jLabel2.setText("Vídeo Locadora");
 
-        java_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/java_cafe.png"))); // NOI18N
-        java_img.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                java_imgAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(308, 308, 308)
-                .addComponent(java_img, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(369, 369, 369)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -73,10 +59,8 @@ public class Menu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(117, 117, 117)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(java_img, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(369, Short.MAX_VALUE))
         );
 
         locacao.setText("Locação");
@@ -163,10 +147,6 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_sairActionPerformed
 
-    private void java_imgAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_java_imgAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_java_imgAncestorAdded
-
     /**
      * @param args the command line arguments
      */
@@ -212,7 +192,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel java_img;
     private javax.swing.JButton locacao;
     private javax.swing.JButton sair;
     // End of variables declaration//GEN-END:variables
