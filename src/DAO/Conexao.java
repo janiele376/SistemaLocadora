@@ -10,14 +10,20 @@ public class Conexao {
     public static Connection AbrirConexao() {
         Connection con = null;
         try {
-            // Carrega o driver
+            // No NetBeans 8.1 com MySQL 5.x ou bibliotecas antigas, use este driver:
             Class.forName("com.mysql.jdbc.Driver");
-            // String de conexão com o banco 'locadora'
-            String url = "jdbc:mysql://localhost/locadora";
-            // Estabelece a conexão (Usuário: root, Senha: ou vazia ou a que você definiu)
+            
+            // Configuração da URL (Localhost, porta padrão 3306, banco locadora)
+            String url = "jdbc:mysql://localhost:3306/locadora";
+            
+            // Tenta conectar (root e senha vazia é o padrão do XAMPP/WAMP)
+            // Se tiver senha, coloque no lugar das aspas vazias ""
             con = DriverManager.getConnection(url, "root", ""); 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão com o Banco: " + e.getMessage());
+            
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Driver do Banco não encontrado! \nAdicione a biblioteca mysql-connector.", "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro na conexão com o Banco: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
         return con;
     }

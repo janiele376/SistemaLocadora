@@ -1,10 +1,14 @@
 package DAO;
-import Modelo.Aluguel; // Você precisará criar a classe Modelo/Aluguel
+
+import Modelo.Aluguel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane; 
 
 public class AluguelDAO extends ExecuteSQL {
+
     public AluguelDAO(Connection con) {
         super(con);
     }
@@ -21,7 +25,7 @@ public class AluguelDAO extends ExecuteSQL {
                     resultado = true;
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return resultado;
@@ -39,7 +43,7 @@ public class AluguelDAO extends ExecuteSQL {
                     resultado = true; // Está disponível
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return resultado;
@@ -48,22 +52,26 @@ public class AluguelDAO extends ExecuteSQL {
     // Registra o Aluguel e muda a situação do DVD para 'Alugado'
     public void Inserir_Aluguel(Aluguel a) {
         String sql = "INSERT INTO aluguel(iddvd, idcliente, hora_aluguel, data_aluguel) VALUES(?,?,?,?)";
+        
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
-            ps.setInt(1, a.getCoddvd());
-            ps.setInt(2, a.getCodcliente());
+            ps.setInt(1, a.getCod_dvd());      
+            ps.setInt(2, a.getCod_cliente());
             ps.setString(3, a.getHorario());
             ps.setString(4, a.getData_aluguel());
+            
             ps.execute();
             
             // ATUALIZA A SITUAÇÃO DO DVD
             String sqlUpdate = "UPDATE dvd SET situacao = 'Alugado' WHERE iddvd = ?";
             PreparedStatement psUp = getCon().prepareStatement(sqlUpdate);
-            psUp.setInt(1, a.getCoddvd());
+            psUp.setInt(1, a.getCod_dvd());
+            
             psUp.execute();
             
             JOptionPane.showMessageDialog(null, "Locação realizada com sucesso!");
-        } catch (Exception e) {
+            
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro na Locação: " + e.getMessage());
         }
     }
