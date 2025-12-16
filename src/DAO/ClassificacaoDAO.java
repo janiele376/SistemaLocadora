@@ -1,42 +1,40 @@
 package DAO;
 
-import Modelo.Categoria;
+import Modelo.Classificacao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriaDAO extends ExecuteSQL {
-    public CategoriaDAO(Connection con) {
-        super(con);
-    }
+public class ClassificacaoDAO extends ExecuteSQL {
+    public ClassificacaoDAO(Connection con) { super(con); }
 
-    public String Inserir_Categoria(Categoria a) {
-        String sql = "INSERT INTO categoria(nome) VALUES(?)";
+    public String Inserir_Classificacao(Classificacao a) {
+        String sql = "INSERT INTO classificacao(nome, preco) VALUES(?,?)";
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ps.setString(1, a.getNome());
+            ps.setDouble(2, a.getPreco());
             if (ps.executeUpdate() > 0) return "Inserido com Sucesso";
             else return "Erro ao Inserir";
         } catch (Exception e) { return e.getMessage(); }
     }
-
-    public List<Categoria> ListarCategoria() {
-        String sql = "SELECT * FROM categoria";
-        List<Categoria> lista = new ArrayList<>();
+    
+    public List<Classificacao> ListarClassificacao() {
+        String sql = "SELECT * FROM classificacao";
+        List<Classificacao> lista = new ArrayList<>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Categoria a = new Categoria();
+                Classificacao a = new Classificacao();
                 a.setCodigo(rs.getInt(1));
                 a.setNome(rs.getString(2));
+                a.setPreco(rs.getDouble(3));
                 lista.add(a);
             }
         } catch (Exception e) { e.printStackTrace(); }
         return lista;
     }
-    
-    // Você pode criar aqui o Alterar e Excluir seguindo o padrão do ClienteDAO
 }
