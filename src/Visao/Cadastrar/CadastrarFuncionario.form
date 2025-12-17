@@ -97,12 +97,12 @@
                   </Group>
                   <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField2" pref="177" max="32767" attributes="0"/>
                       <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPasswordField1" max="32767" attributes="0"/>
+                      <Component id="jTextField1" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
                   <Component id="jLabel6" min="-2" pref="142" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
               </Group>
