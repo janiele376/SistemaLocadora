@@ -37,7 +37,7 @@ public class DVDDAO extends ExecuteSQL {
     // --- LISTAR TODOS ---
     public List<DVD> Listar_DVD() {
         String sql = "SELECT * FROM dvd";
-        List<DVD> lista = new ArrayList<>();
+        List<DVD> lista = new ArrayList<DVD>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -55,7 +55,7 @@ public class DVDDAO extends ExecuteSQL {
                 }
                 return lista;
             } else {
-                return new ArrayList<>();
+                return new ArrayList<DVD>();
             }
         } catch (SQLException e) {
             return null;

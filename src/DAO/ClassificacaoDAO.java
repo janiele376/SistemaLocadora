@@ -35,7 +35,7 @@ public class ClassificacaoDAO extends ExecuteSQL {
     // 2. LISTAR (Trazer todos para a tabela)
     public List<Classificacao> Listar_Classificacao() {
         String sql = "SELECT * FROM classificacao";
-        List<Classificacao> lista = new ArrayList<>();
+        List<Classificacao> lista = new ArrayList<Classificacao>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -59,7 +59,7 @@ public class ClassificacaoDAO extends ExecuteSQL {
     // 3. PESQUISAR POR NOME (Usado nos filtros)
     public List<Classificacao> Pesquisar_Nome_Classificacao(String nome) {
         String sql = "SELECT * FROM classificacao WHERE nome LIKE '%" + nome + "%'";
-        List<Classificacao> lista = new ArrayList<>();
+        List<Classificacao> lista = new ArrayList<Classificacao>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -83,7 +83,7 @@ public class ClassificacaoDAO extends ExecuteSQL {
     // 4. PESQUISAR POR CÓDIGO (Usado para preencher campos ao alterar)
     public List<Classificacao> Pesquisar_Cod_Classificacao(int cod) {
         String sql = "SELECT * FROM classificacao WHERE idclassificacao = '" + cod + "'";
-        List<Classificacao> lista = new ArrayList<>();
+        List<Classificacao> lista = new ArrayList<Classificacao>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

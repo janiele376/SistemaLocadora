@@ -43,7 +43,7 @@ public class ClienteDAO extends ExecuteSQL {
     // 2. LISTAR
     public List<Cliente> Listar_Cliente() {
         String sql = "SELECT * FROM cliente";
-        List<Cliente> lista = new ArrayList<>();
+        List<Cliente> lista = new ArrayList<Cliente>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -75,7 +75,7 @@ public class ClienteDAO extends ExecuteSQL {
     // 3. PESQUISAR POR NOME
     public List<Cliente> Pesquisar_Nome_Cliente(String nome) {
         String sql = "SELECT * FROM cliente WHERE nome LIKE '%" + nome + "%'";
-        List<Cliente> lista = new ArrayList<>();
+        List<Cliente> lista = new ArrayList<Cliente>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -106,7 +106,7 @@ public class ClienteDAO extends ExecuteSQL {
     // 4. PESQUISAR POR CÓDIGO
     public List<Cliente> Pesquisar_Cod_Cliente(int cod) {
         String sql = "SELECT * FROM cliente WHERE idcliente = '" + cod + "'";
-        List<Cliente> lista = new ArrayList<>();
+        List<Cliente> lista = new ArrayList<Cliente>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

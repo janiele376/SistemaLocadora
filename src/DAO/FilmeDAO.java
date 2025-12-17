@@ -39,7 +39,7 @@ public class FilmeDAO extends ExecuteSQL {
     // 2. LISTAR
     public List<Filme> Listar_Filme() {
         String sql = "SELECT * FROM filme";
-        List<Filme> lista = new ArrayList<>();
+        List<Filme> lista = new ArrayList<Filme>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -67,7 +67,7 @@ public class FilmeDAO extends ExecuteSQL {
     // 3. PESQUISAR POR TÍTULO
     public List<Filme> Pesquisar_Nome_Filme(String nome) {
         String sql = "SELECT * FROM filme WHERE titulo LIKE '%" + nome + "%'";
-        List<Filme> lista = new ArrayList<>();
+        List<Filme> lista = new ArrayList<Filme>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -95,7 +95,7 @@ public class FilmeDAO extends ExecuteSQL {
     // 4. PESQUISAR POR CÓDIGO (Para alterar)
     public List<Filme> Pesquisar_Cod_Filme(int cod) {
         String sql = "SELECT * FROM filme WHERE idfilme = '" + cod + "'";
-        List<Filme> lista = new ArrayList<>();
+        List<Filme> lista = new ArrayList<Filme>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

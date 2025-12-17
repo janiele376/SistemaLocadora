@@ -34,7 +34,7 @@ public class CategoriaDAO extends ExecuteSQL {
     // 2. LISTAR (Tudo)
     public List<Categoria> Listar_Categoria() {
         String sql = "SELECT * FROM categoria";
-        List<Categoria> lista = new ArrayList<>();
+        List<Categoria> lista = new ArrayList<Categoria>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -56,7 +56,7 @@ public class CategoriaDAO extends ExecuteSQL {
     // 3. PESQUISAR POR NOME
     public List<Categoria> Pesquisar_Nome_Categoria(String nome) {
         String sql = "SELECT * FROM categoria WHERE nome LIKE '%" + nome + "%'";
-        List<Categoria> lista = new ArrayList<>();
+        List<Categoria> lista = new ArrayList<Categoria>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -78,7 +78,7 @@ public class CategoriaDAO extends ExecuteSQL {
     // 4. PESQUISAR POR CÓDIGO (Para alterar)
     public List<Categoria> Pesquisar_Cod_Categoria(int cod) {
         String sql = "SELECT * FROM categoria WHERE idcategoria = '" + cod + "'";
-        List<Categoria> lista = new ArrayList<>();
+        List<Categoria> lista = new ArrayList<Categoria>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
