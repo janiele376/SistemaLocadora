@@ -3,17 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/DAO/DVDDAO.java</file>
-            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/DAO/CategoriaDAO.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Alterar/AlterarCategoria.java</file>
             <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Alterar/AlterarFilme.java</file>
-            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Alterar/AlterarDVD.java</file>
-            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/DAO/ClassificacaoDAO.java</file>
-            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/DAO/FilmeDAO.java</file>
-            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Principal/Menu.java</file>
-            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Principal/Main.java</file>
-            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/DAO/ClienteDAO.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Excluir/ExcluirFuncionario.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Cadastrar/CadastrarCliente.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Cadastrar/CadastrarClassificacao.java</file>
             <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Alterar/AlterarFuncionario.java</file>
-            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Principal/Login.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Excluir/ExcluirCategoria.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Excluir/ExcluirCliente.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Consultar/ConsultarFilme.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Alterar/AlterarDVD.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Cadastrar/CadastrarCategoria.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Alterar/AlterarClassificacao.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Excluir/ExcluirClassificacao.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Excluir/ExcluirDVD.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Consultar/ConsultarCategoria.java</file>
+            <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Excluir/ExcluirFilme.java</file>
             <file>file:/C:/Users/Aluno/Documents/SistemaLocadora/src/Visao/Alterar/AlterarCliente.java</file>
         </group>
     </open-files>
