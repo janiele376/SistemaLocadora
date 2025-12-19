@@ -5,6 +5,14 @@
  */
 package Visao.Alterar;
 
+import DAO.Conexao;
+import DAO.FuncionarioDAO;
+import Modelo.Funcionario;
+import Principal.Menu;
+import java.sql.Connection;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno
@@ -31,17 +39,17 @@ public class AlterarFuncionario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        campo_codigofuncionario_alterar = new javax.swing.JTextField();
+        jTF_CodigoPesquisa = new javax.swing.JTextField();
         bt_codigofuncionario_alterar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        campo_codigoid_funcionario_alterar = new javax.swing.JTextField();
-        campo_nome_funcionario_alterar = new javax.swing.JTextField();
-        campo_login_funcionario_alterar = new javax.swing.JTextField();
-        campo_senha_funcionario_alterar = new javax.swing.JTextField();
+        jTF_Codigo = new javax.swing.JTextField();
+        jTF_Nome = new javax.swing.JTextField();
+        jTF_Login = new javax.swing.JTextField();
+        jTF_Senha = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         bt_limpar_funcionario_alterar = new javax.swing.JButton();
@@ -77,6 +85,11 @@ public class AlterarFuncionario extends javax.swing.JFrame {
 
         bt_codigofuncionario_alterar.setText("OK");
         bt_codigofuncionario_alterar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        bt_codigofuncionario_alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_codigofuncionario_alterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -86,7 +99,7 @@ public class AlterarFuncionario extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(campo_codigofuncionario_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTF_CodigoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(bt_codigofuncionario_alterar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -97,7 +110,7 @@ public class AlterarFuncionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(campo_codigofuncionario_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTF_CodigoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_codigofuncionario_alterar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -130,8 +143,8 @@ public class AlterarFuncionario extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addGap(13, 13, 13)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(campo_senha_funcionario_alterar, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                            .addComponent(campo_login_funcionario_alterar))
+                            .addComponent(jTF_Senha, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                            .addComponent(jTF_Login))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,10 +153,10 @@ public class AlterarFuncionario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(campo_codigoid_funcionario_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(campo_nome_funcionario_alterar, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                .addComponent(jTF_Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                                 .addGap(97, 97, 97)))
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59))))
@@ -157,19 +170,19 @@ public class AlterarFuncionario extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(campo_codigoid_funcionario_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(campo_nome_funcionario_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(campo_login_funcionario_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTF_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(campo_senha_funcionario_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTF_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -177,6 +190,11 @@ public class AlterarFuncionario extends javax.swing.JFrame {
 
         bt_limpar_funcionario_alterar.setText("Limpar");
         bt_limpar_funcionario_alterar.setPreferredSize(new java.awt.Dimension(70, 20));
+        bt_limpar_funcionario_alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_funcionario_alterarActionPerformed(evt);
+            }
+        });
 
         bt_alterar_funcionario_alterar.setText("Alterar");
         bt_alterar_funcionario_alterar.setPreferredSize(new java.awt.Dimension(70, 20));
@@ -188,6 +206,11 @@ public class AlterarFuncionario extends javax.swing.JFrame {
 
         bt_cancelar_funcionario_alterar.setText("Cancelar");
         bt_cancelar_funcionario_alterar.setPreferredSize(new java.awt.Dimension(70, 20));
+        bt_cancelar_funcionario_alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cancelar_funcionario_alterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -238,8 +261,106 @@ public class AlterarFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_alterar_funcionario_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterar_funcionario_alterarActionPerformed
-        // TODO add your handling code here:
+String codigo = jTF_Codigo.getText();
+        String nome = jTF_Nome.getText();
+        String login = jTF_Login.getText();
+        String senha = jTF_Senha.getText(); 
+        // Se estiver usando JTextField normal para senha, use: jTF_Senha.getText();
+        
+        
+        // Validação
+        if (codigo.equals("") || nome.equals("") || senha.equals("")) {
+            JOptionPane.showMessageDialog(null, "Pesquise um funcionário e preencha os campos!", 
+                    "Atenção", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Connection con = Conexao.AbrirConexao();
+            FuncionarioDAO sql = new FuncionarioDAO(con);
+            Funcionario a = new Funcionario();
+            
+            try {
+                // Preenche o ID (quem será alterado)
+                a.setCodigo(Integer.parseInt(codigo));
+                
+                // Preenche os novos dados
+                a.setNome(nome);
+                a.setLogin(login);
+                a.setSenha(senha);
+                
+                // Manda alterar
+                String resultado = sql.Alterar_Funcionario(a);
+                
+                JOptionPane.showMessageDialog(null, resultado);
+                
+                // Limpa campos se deu certo
+                if (resultado.contains("Sucesso")) {
+                    jTF_Codigo.setText("");
+                    jTF_Nome.setText("");
+                    jTF_Login.setText("");
+                    jTF_Senha.setText("");
+                }
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Código inválido!", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                Conexao.FecharConexao(con);
+            }
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_bt_alterar_funcionario_alterarActionPerformed
+
+    private void bt_cancelar_funcionario_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelar_funcionario_alterarActionPerformed
+Menu a = new Menu();
+        
+        // 2. Faz a tela aparecer na frente do usuário
+        a.setVisible(true);  
+        dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_bt_cancelar_funcionario_alterarActionPerformed
+
+    private void bt_codigofuncionario_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_codigofuncionario_alterarActionPerformed
+String codigo = jTF_CodigoPesquisa.getText();
+        
+        if (codigo.equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o código do Funcionário!", 
+                    "Vídeo Locadora", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Connection con = Conexao.AbrirConexao();
+            FuncionarioDAO sql = new FuncionarioDAO(con);
+            
+            try {
+                int cod = Integer.parseInt(codigo);
+                
+                // Busca o funcionário usando o método que adicionamos agora
+                List<Funcionario> lista = sql.Pesquisar_Cod_Funcionario(cod);
+                
+                if (lista.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Funcionário não encontrado!", 
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                    jTF_Nome.setText("");
+                    jTF_Login.setText("");
+                    jTF_Senha.setText("");
+                } else {
+                    // Preenche os campos
+                    jTF_Nome.setText(lista.get(0).getNome());
+                    jTF_Login.setText(lista.get(0).getLogin());
+                    jTF_Senha.setText(lista.get(0).getSenha());
+                }
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "O Código deve ser um número inteiro!", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                Conexao.FecharConexao(con);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_codigofuncionario_alterarActionPerformed
+
+    private void bt_limpar_funcionario_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_funcionario_alterarActionPerformed
+jTF_Codigo.setText("");
+        jTF_Nome.setText("");
+        jTF_Login.setText("");
+        jTF_Senha.setText("");
+        jTF_Codigo.requestFocus();        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_funcionario_alterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,11 +402,6 @@ public class AlterarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton bt_cancelar_funcionario_alterar;
     private javax.swing.JButton bt_codigofuncionario_alterar;
     private javax.swing.JButton bt_limpar_funcionario_alterar;
-    private javax.swing.JTextField campo_codigofuncionario_alterar;
-    private javax.swing.JTextField campo_codigoid_funcionario_alterar;
-    private javax.swing.JTextField campo_login_funcionario_alterar;
-    private javax.swing.JTextField campo_nome_funcionario_alterar;
-    private javax.swing.JTextField campo_senha_funcionario_alterar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -297,5 +413,10 @@ public class AlterarFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JTextField jTF_Codigo;
+    private javax.swing.JTextField jTF_CodigoPesquisa;
+    private javax.swing.JTextField jTF_Login;
+    private javax.swing.JTextField jTF_Nome;
+    private javax.swing.JTextField jTF_Senha;
     // End of variables declaration//GEN-END:variables
 }

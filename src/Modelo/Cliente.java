@@ -9,16 +9,16 @@ public class Cliente {
     private String cpf;
     private String telefone;
     private String email;
+    private String nascimento; // O campo que estava faltando o Getter/Setter
     
-    // Campos de Endereço (que faltavam no seu código)
+    // Campos de Endereço
     private String rua;
     private int numero;
     private String bairro;
     private String cep;
 
     // --- GETTERS E SETTERS ---
-    // (Gerados com Alt+Insert. São obrigatórios para o DAO funcionar)
-
+    
     public int getCodigo() {
         return codigo;
     }
@@ -66,6 +66,16 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    // --- AQUI ESTAVA O PROBLEMA: ADICIONADOS OS MÉTODOS DE NASCIMENTO ---
+    public String getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
+    }
+    // --------------------------------------------------------------------
 
     public String getRua() {
         return rua;

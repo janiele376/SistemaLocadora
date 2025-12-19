@@ -5,6 +5,14 @@
  */
 package Visao.Excluir;
 
+import DAO.ClienteDAO;
+import DAO.Conexao;
+import Modelo.Cliente;
+import Principal.Menu;
+import java.sql.Connection;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno
@@ -31,7 +39,7 @@ public class ExcluirCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTF_Nome = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
@@ -59,7 +67,7 @@ public class ExcluirCliente extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -68,7 +76,7 @@ public class ExcluirCliente extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -77,8 +85,18 @@ public class ExcluirCliente extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
         jButton3.setText("OK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Cancelar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -138,6 +156,60 @@ public class ExcluirCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+Menu a = new Menu();
+        
+        // 2. Faz a tela aparecer na frente do usuário
+        a.setVisible(true);  
+        dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+String nome = jTF_Nome.getText();
+        
+        // 1. Verifica se digitou algo
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o Nome do Cliente para excluir!", 
+                    "Vídeo Locadora", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Connection con = Conexao.AbrirConexao();
+            ClienteDAO sql = new ClienteDAO(con);
+            
+            // 2. Busca o cliente pelo NOME
+            List<Cliente> lista = sql.Pesquisar_Nome_Cliente(nome);
+            
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Nenhum cliente encontrado com esse nome!", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // 3. Pega o primeiro cliente encontrado
+                Cliente a = lista.get(0);
+                
+                // 4. Pergunta de Segurança
+                // Mostra Nome e CPF para evitar apagar a pessoa errada
+                int opcao = JOptionPane.showConfirmDialog(null, 
+                        "Encontramos o cliente:\n" + 
+                        "Nome: " + a.getNome() + "\n" +
+                        "CPF: " + a.getCpf() + "\n\n" +
+                        "Tem certeza que deseja excluir?", 
+                        "Confirmação", JOptionPane.YES_NO_OPTION);
+                
+                // 5. Se confirmar, exclui
+                if (opcao == JOptionPane.YES_OPTION) {
+                    String resultado = sql.Excluir_Cliente(a);
+                    JOptionPane.showMessageDialog(null, resultado);
+                    
+                    // Limpa o campo
+                    if (resultado.contains("Sucesso")) {
+                        jTF_Nome.setText("");
+                    }
+                }
+            }
+            
+            Conexao.FecharConexao(con);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -182,6 +254,6 @@ public class ExcluirCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTF_Nome;
     // End of variables declaration//GEN-END:variables
 }

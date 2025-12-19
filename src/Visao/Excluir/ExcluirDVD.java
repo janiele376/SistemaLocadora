@@ -5,6 +5,13 @@
  */
 package Visao.Excluir;
 
+import DAO.Conexao;
+import DAO.DVDDAO;
+import Modelo.DVD;
+import Principal.Menu;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno
@@ -31,7 +38,7 @@ public class ExcluirDVD extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTF_Nome = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
@@ -40,11 +47,11 @@ public class ExcluirDVD extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel1.setText("Excluir Cliente");
+        jLabel1.setText("Excluir DVD");
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel4.setText("Nome:");
+        jLabel4.setText("Código:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -59,7 +66,7 @@ public class ExcluirDVD extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -68,7 +75,7 @@ public class ExcluirDVD extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -77,8 +84,18 @@ public class ExcluirDVD extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
         jButton3.setText("OK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Cancelar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -105,19 +122,19 @@ public class ExcluirDVD extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,6 +154,65 @@ public class ExcluirDVD extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+Menu a = new Menu();
+        
+        // 2. Faz a tela aparecer na frente do usuário
+        a.setVisible(true);  
+        dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+String codigo = jTF_Nome.getText();
+        
+        // 1. Verifica se digitou o código
+        if (codigo.equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o Código do DVD para excluir!", 
+                    "Vídeo Locadora", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Connection con = Conexao.AbrirConexao();
+            DVDDAO sql = new DVDDAO(con);
+            
+            try {
+                int cod = Integer.parseInt(codigo);
+                
+                // 2. Busca o DVD para saber se ele existe e pegar os detalhes
+                DVD a = sql.Pesquisar_Cod_DVD(cod);
+                
+                if (a.getCodigo() == 0) { // Se o código for 0, é porque não achou
+                    JOptionPane.showMessageDialog(null, "DVD não encontrado!", 
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // 3. Pergunta de Segurança
+                    // Mostramos o Código do Filme e a Situação para confirmar
+                    int opcao = JOptionPane.showConfirmDialog(null, 
+                            "Encontramos o DVD de Código: " + a.getCodigo() + "\n" +
+                            "Pertence ao Filme (ID): " + a.getCod_filme() + "\n" +
+                            "Situação: " + a.getSituacao() + "\n\n" +
+                            "Tem certeza que deseja excluir?", 
+                            "Confirmação", JOptionPane.YES_NO_OPTION);
+                    
+                    // 4. Se confirmar, exclui
+                    if (opcao == JOptionPane.YES_OPTION) {
+                        String resultado = sql.Excluir_DVD(a);
+                        JOptionPane.showMessageDialog(null, resultado);
+                        
+                        // Limpa o campo se deu certo
+                        if (resultado.contains("Sucesso")) {
+                            jTF_Nome.setText("");
+                        }
+                    }
+                }
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "O Código deve ser um número inteiro!", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                Conexao.FecharConexao(con);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +258,6 @@ public class ExcluirDVD extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTF_Nome;
     // End of variables declaration//GEN-END:variables
 }

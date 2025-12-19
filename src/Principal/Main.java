@@ -5,6 +5,9 @@
  */
 package Principal;
 
+// IMPORTANTE: Importe a sua tela de Login aqui.
+// Se o pacote da sua tela for "Visao", o import é assim:
+
 /**
  *
  * @author Aluno
@@ -15,7 +18,14 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        // 1. Cria o objeto da tela de Login
+        Login a = new Login();
+        
+        // 2. Faz a tela aparecer na frente do usuário
+        a.setVisible(true);
+        
+        
     }
     
 }

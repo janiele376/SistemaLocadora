@@ -18,7 +18,7 @@ public class Conexao {
             
             // Tenta conectar (root e senha vazia é o padrão do XAMPP/WAMP)
             // Se tiver senha, coloque no lugar das aspas vazias ""
-            con = DriverManager.getConnection(url, "root", ""); 
+            con = DriverManager.getConnection(url, "root", "admin"); 
             
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Driver do Banco não encontrado! \nAdicione a biblioteca mysql-connector.", "Erro", JOptionPane.ERROR_MESSAGE);

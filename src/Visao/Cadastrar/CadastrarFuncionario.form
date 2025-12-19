@@ -97,10 +97,10 @@
                   </Group>
                   <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jTextField2" pref="177" max="32767" attributes="0"/>
-                      <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jPasswordField1" max="32767" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jTF_Nome" pref="177" max="32767" attributes="0"/>
+                      <Component id="jTF_Login" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTF_Senha" max="32767" attributes="0"/>
+                      <Component id="jTF_Codigo" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="39" max="32767" attributes="0"/>
                   <Component id="jLabel6" min="-2" pref="142" max="-2" attributes="0"/>
@@ -120,22 +120,22 @@
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Codigo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Nome" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Login" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Senha" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -165,11 +165,11 @@
             <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="jTF_Codigo">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="jTF_Nome">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="jTF_Login">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -178,7 +178,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+        <Component class="javax.swing.JPasswordField" name="jTF_Senha">
         </Component>
       </SubComponents>
     </Container>
@@ -227,11 +227,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

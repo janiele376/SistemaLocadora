@@ -5,6 +5,14 @@
  */
 package Visao.Alterar;
 
+import DAO.Conexao;
+import DAO.FilmeDAO;
+import Modelo.Filme;
+import Principal.Menu;
+import java.sql.Connection;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno
@@ -37,21 +45,21 @@ public class AlterarFilme extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         tamanho_capa = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        campo_codigoid_filme_alterar = new javax.swing.JTextField();
-        campo_duracao_filme_alterar = new javax.swing.JTextField();
-        campo_categoria_filme_alterar = new javax.swing.JTextField();
-        campo_classificacao_filme_alterar = new javax.swing.JTextField();
+        jTF_Codigo = new javax.swing.JTextField();
+        jTF_Duracao = new javax.swing.JTextField();
+        jTF_Categoria = new javax.swing.JTextField();
+        jTF_Classificacao = new javax.swing.JTextField();
         box_categoria_filme_alterar = new javax.swing.JComboBox<>();
         box_classificacao_filme_alterar = new javax.swing.JComboBox<>();
-        campo_filme_titulo_alterar = new javax.swing.JTextField();
-        campo_capa_filme_alterar = new javax.swing.JTextField();
+        jTF_Titulo = new javax.swing.JTextField();
+        jTF_Capa = new javax.swing.JTextField();
         bt_ok_capa_filme_alterar = new javax.swing.JButton();
         imagem_capa_filme_alterar = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        campo_ano_filme_alterar = new javax.swing.JTextField();
+        jTF_Ano = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        campo_codigofilme_alterar_filme = new javax.swing.JTextField();
+        jTF_CodigoPesquisa = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         bt_limpar_filme_alterar = new javax.swing.JButton();
@@ -96,15 +104,15 @@ public class AlterarFilme extends javax.swing.JFrame {
 
         jLabel9.setText("Duração:");
 
-        campo_codigoid_filme_alterar.addActionListener(new java.awt.event.ActionListener() {
+        jTF_Codigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_codigoid_filme_alterarActionPerformed(evt);
+                jTF_CodigoActionPerformed(evt);
             }
         });
 
-        campo_duracao_filme_alterar.addActionListener(new java.awt.event.ActionListener() {
+        jTF_Duracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_duracao_filme_alterarActionPerformed(evt);
+                jTF_DuracaoActionPerformed(evt);
             }
         });
 
@@ -133,9 +141,9 @@ public class AlterarFilme extends javax.swing.JFrame {
 
         jLabel12.setText("Ano:");
 
-        campo_ano_filme_alterar.addActionListener(new java.awt.event.ActionListener() {
+        jTF_Ano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_ano_filme_alterarActionPerformed(evt);
+                jTF_AnoActionPerformed(evt);
             }
         });
 
@@ -151,16 +159,16 @@ public class AlterarFilme extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(18, 18, 18)
-                                .addComponent(campo_ano_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTF_Ano, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campo_duracao_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTF_Duracao, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(campo_capa_filme_alterar)
+                                    .addComponent(jTF_Capa)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(bt_ok_capa_filme_alterar))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -169,16 +177,16 @@ public class AlterarFilme extends javax.swing.JFrame {
                                         .addComponent(jLabel5))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(campo_classificacao_filme_alterar, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                                        .addComponent(campo_categoria_filme_alterar))
+                                        .addComponent(jTF_Classificacao)
+                                        .addComponent(jTF_Categoria))
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(box_categoria_filme_alterar, 0, 160, Short.MAX_VALUE)
                                         .addComponent(box_classificacao_filme_alterar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                    .addComponent(campo_filme_titulo_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                    .addComponent(jTF_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(42, 42, 42))))
                         .addGap(18, 18, 18)
                         .addComponent(imagem_capa_filme_alterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -186,7 +194,7 @@ public class AlterarFilme extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campo_codigoid_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tamanho_capa)
                         .addGap(73, 73, 73))))
@@ -197,34 +205,34 @@ public class AlterarFilme extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(campo_codigoid_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tamanho_capa))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(campo_filme_titulo_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTF_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(campo_ano_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTF_Ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
-                            .addComponent(campo_duracao_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTF_Duracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(campo_categoria_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTF_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(box_categoria_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(campo_classificacao_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTF_Classificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(box_classificacao_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(campo_capa_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTF_Capa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bt_ok_capa_filme_alterar)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -252,7 +260,7 @@ public class AlterarFilme extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campo_codigofilme_alterar_filme, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTF_CodigoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -263,7 +271,7 @@ public class AlterarFilme extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(campo_codigofilme_alterar_filme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTF_CodigoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5))
                 .addContainerGap())
         );
@@ -271,10 +279,25 @@ public class AlterarFilme extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
         bt_limpar_filme_alterar.setText("Limpar");
+        bt_limpar_filme_alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_limpar_filme_alterarActionPerformed(evt);
+            }
+        });
 
         bt_alterar_filme_alterar.setText("Alterar");
+        bt_alterar_filme_alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_alterar_filme_alterarActionPerformed(evt);
+            }
+        });
 
         bt_cancelar_filme_alterar.setText("Cancelar");
+        bt_cancelar_filme_alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cancelar_filme_alterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -325,20 +348,58 @@ public class AlterarFilme extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+String codigo = jTF_CodigoPesquisa.getText();
+        
+        if (codigo.equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o código do Filme!", 
+                    "Vídeo Locadora", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Connection con = Conexao.AbrirConexao();
+            FilmeDAO sql = new FilmeDAO(con);
+            
+            try {
+                int cod = Integer.parseInt(codigo);
+                
+                // Busca o filme
+                List<Filme> lista = sql.Pesquisar_Cod_Filme(cod);
+                
+                if (lista.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Filme não encontrado!", 
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                    LimparCampos();
+                } else {
+                    // Pega o primeiro filme encontrado
+                    Filme a = lista.get(0);
+                    
+                    // Preenche os campos na tela
+                    jTF_Titulo.setText(a.getTitulo());
+                    jTF_Ano.setText(String.valueOf(a.getAno()));
+                    jTF_Duracao.setText(a.getDuracao());
+                    jTF_Categoria.setText(String.valueOf(a.getCod_categoria()));
+                    jTF_Classificacao.setText(String.valueOf(a.getCod_classificacao()));
+                    jTF_Capa.setText(a.getCapa());
+                }
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "O Código deve ser um número inteiro!", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                Conexao.FecharConexao(con);
+            }
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void campo_codigoid_filme_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_codigoid_filme_alterarActionPerformed
+    private void jTF_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_CodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campo_codigoid_filme_alterarActionPerformed
+    }//GEN-LAST:event_jTF_CodigoActionPerformed
 
-    private void campo_duracao_filme_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_duracao_filme_alterarActionPerformed
+    private void jTF_DuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_DuracaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campo_duracao_filme_alterarActionPerformed
+    }//GEN-LAST:event_jTF_DuracaoActionPerformed
 
-    private void campo_ano_filme_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_ano_filme_alterarActionPerformed
+    private void jTF_AnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_AnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campo_ano_filme_alterarActionPerformed
+    }//GEN-LAST:event_jTF_AnoActionPerformed
 
     private void box_categoria_filme_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box_categoria_filme_alterarActionPerformed
         // TODO add your handling code here:
@@ -352,6 +413,78 @@ public class AlterarFilme extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_box_classificacao_filme_alterarActionPerformed
 
+    private void bt_cancelar_filme_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelar_filme_alterarActionPerformed
+Menu a = new Menu();
+        
+        // 2. Faz a tela aparecer na frente do usuário
+        a.setVisible(true);  
+        dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_bt_cancelar_filme_alterarActionPerformed
+
+    private void bt_alterar_filme_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterar_filme_alterarActionPerformed
+String codigo = jTF_Codigo.getText(); // ID do Filme
+        String titulo = jTF_Titulo.getText();
+        String anoStr = jTF_Ano.getText();
+        String duracao = jTF_Duracao.getText();
+        String codCategoria = jTF_Categoria.getText();
+        String codClassificacao = jTF_Classificacao.getText();
+        String capa = jTF_Capa.getText();
+        
+        // Verifica campos obrigatórios
+        if (codigo.equals("") || titulo.equals("")) {
+            JOptionPane.showMessageDialog(null, "Pesquise um Filme e preencha os campos!", 
+                    "Atenção", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Connection con = Conexao.AbrirConexao();
+            FilmeDAO sql = new FilmeDAO(con);
+            Filme a = new Filme();
+            
+            try {
+                // Preenche o ID (quem será alterado)
+                a.setCodigo(Integer.parseInt(codigo));
+                
+                // Preenche Strings
+                a.setTitulo(titulo);
+                a.setDuracao(duracao);
+                a.setCapa(capa);
+                
+                // Conversões de Inteiros
+                a.setAno(Integer.parseInt(anoStr));
+                a.setCod_categoria(Integer.parseInt(codCategoria));
+                a.setCod_classificacao(Integer.parseInt(codClassificacao));
+                
+                // Manda alterar
+                String resultado = sql.Alterar_Filme(a);
+                
+                JOptionPane.showMessageDialog(null, resultado);
+                
+                // Limpa campos se deu certo
+                if (resultado.contains("Sucesso")) {
+                    jTF_Codigo.setText("");
+                    LimparCampos();
+                }
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Verifique se Ano, Categoria e Classificação são números!", 
+                        "Erro de Formato", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                Conexao.FecharConexao(con);
+            }
+        }    }//GEN-LAST:event_bt_alterar_filme_alterarActionPerformed
+
+    private void bt_limpar_filme_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_limpar_filme_alterarActionPerformed
+jTF_CodigoPesquisa.setText("");
+        LimparCampos();
+        jTF_Codigo.requestFocus();        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_limpar_filme_alterarActionPerformed
+public void LimparCampos() {
+        jTF_Titulo.setText("");
+        jTF_Ano.setText("");
+        jTF_Duracao.setText("");
+        jTF_Categoria.setText("");
+        jTF_Classificacao.setText("");
+        jTF_Capa.setText("");
+    } 
     /**
      * @param args the command line arguments
      */
@@ -394,14 +527,6 @@ public class AlterarFilme extends javax.swing.JFrame {
     private javax.swing.JButton bt_cancelar_filme_alterar;
     private javax.swing.JButton bt_limpar_filme_alterar;
     private javax.swing.JButton bt_ok_capa_filme_alterar;
-    private javax.swing.JTextField campo_ano_filme_alterar;
-    private javax.swing.JTextField campo_capa_filme_alterar;
-    private javax.swing.JTextField campo_categoria_filme_alterar;
-    private javax.swing.JTextField campo_classificacao_filme_alterar;
-    private javax.swing.JTextField campo_codigofilme_alterar_filme;
-    private javax.swing.JTextField campo_codigoid_filme_alterar;
-    private javax.swing.JTextField campo_duracao_filme_alterar;
-    private javax.swing.JTextField campo_filme_titulo_alterar;
     private javax.swing.JLabel imagem_capa_filme_alterar;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -417,6 +542,14 @@ public class AlterarFilme extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField jTF_Ano;
+    private javax.swing.JTextField jTF_Capa;
+    private javax.swing.JTextField jTF_Categoria;
+    private javax.swing.JTextField jTF_Classificacao;
+    private javax.swing.JTextField jTF_Codigo;
+    private javax.swing.JTextField jTF_CodigoPesquisa;
+    private javax.swing.JTextField jTF_Duracao;
+    private javax.swing.JTextField jTF_Titulo;
     private javax.swing.JLabel tamanho_capa;
     // End of variables declaration//GEN-END:variables
 }

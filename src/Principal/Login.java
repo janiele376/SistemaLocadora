@@ -40,8 +40,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btEntrar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        tfUsuario = new javax.swing.JTextField();
-        tfSenha = new javax.swing.JTextField();
+        jTF_Login = new javax.swing.JTextField();
+        jTF_Senha = new javax.swing.JTextField();
         jProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,16 +96,21 @@ public class Login extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("SAIR");
         jButton2.setPreferredSize(new java.awt.Dimension(80, 30));
-
-        tfUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfUsuarioActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        tfSenha.addActionListener(new java.awt.event.ActionListener() {
+        jTF_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfSenhaActionPerformed(evt);
+                jTF_LoginActionPerformed(evt);
+            }
+        });
+
+        jTF_Senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTF_SenhaActionPerformed(evt);
             }
         });
 
@@ -128,8 +133,8 @@ public class Login extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jTF_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTF_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -141,10 +146,10 @@ public class Login extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTF_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTF_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -173,19 +178,19 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsuarioActionPerformed
+    private void jTF_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_LoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfUsuarioActionPerformed
+    }//GEN-LAST:event_jTF_LoginActionPerformed
 
-    private void tfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSenhaActionPerformed
+    private void jTF_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_SenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfSenhaActionPerformed
+    }//GEN-LAST:event_jTF_SenhaActionPerformed
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
 Connection con = Conexao.AbrirConexao();
 FuncionarioDAO sql = new FuncionarioDAO(con);
-String login = tfUsuario.getText();
-String senha = tfSenha.getText();
+String login = jTF_Login.getText();
+String senha = jTF_Senha.getText();
 
 if (login.equals("") || senha.equals("")) {
     JOptionPane.showMessageDialog(null, "Nenhum dos campos pode estar vazio", "Video Locadora", JOptionPane.WARNING_MESSAGE);
@@ -198,8 +203,13 @@ if (login.equals("") || senha.equals("")) {
         JOptionPane.showMessageDialog(null, "Usuário ou Senha inválidos", "Video Locadora", JOptionPane.ERROR_MESSAGE);
     }
 }
-Conexao.FecharConexao(con);        // TODO add your handling code here:
+Conexao.FecharConexao(con);  
+dispose();// TODO add your handling code here:
     }//GEN-LAST:event_btEntrarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,7 +256,7 @@ Conexao.FecharConexao(con);        // TODO add your handling code here:
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JTextField tfSenha;
-    private javax.swing.JTextField tfUsuario;
+    private javax.swing.JTextField jTF_Login;
+    private javax.swing.JTextField jTF_Senha;
     // End of variables declaration//GEN-END:variables
 }

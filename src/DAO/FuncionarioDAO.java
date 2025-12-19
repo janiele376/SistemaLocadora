@@ -107,6 +107,28 @@ public class FuncionarioDAO extends ExecuteSQL {
             return null;
         }
     }
+    public List<Funcionario> Pesquisar_Cod_Funcionario(int cod) {
+        String sql = "SELECT * FROM funcionario WHERE idfuncionario = " + cod;
+        List<Funcionario> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs != null) {
+                while (rs.next()) {
+                    Funcionario a = new Funcionario();
+                    a.setCodigo(rs.getInt(1));
+                    a.setNome(rs.getString(2));
+                    a.setLogin(rs.getString(3));
+                    a.setSenha(rs.getString(4));
+                    lista.add(a);
+                }
+            }
+            return lista;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
 
     // 5. ALTERAR FUNCIONÁRIO
     public String Alterar_Funcionario(Funcionario a) {

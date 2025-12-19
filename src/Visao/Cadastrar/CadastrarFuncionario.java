@@ -5,6 +5,13 @@
  */
 package Visao.Cadastrar;
 
+import DAO.Conexao;
+import DAO.FuncionarioDAO;
+import Modelo.Funcionario;
+import Principal.Menu;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno
@@ -34,11 +41,11 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTF_Codigo = new javax.swing.JTextField();
+        jTF_Nome = new javax.swing.JTextField();
+        jTF_Login = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jTF_Senha = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -92,10 +99,10 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                    .addComponent(jTextField3)
-                    .addComponent(jPasswordField1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTF_Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                    .addComponent(jTF_Login)
+                    .addComponent(jTF_Senha)
+                    .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65))
@@ -111,19 +118,19 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTF_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTF_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -132,8 +139,18 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jButton1.setText("Limpar");
 
         jButton2.setText("Cadastrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -180,6 +197,55 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+Menu a = new Menu();
+        
+        // 2. Faz a tela aparecer na frente do usuário
+        a.setVisible(true);  
+        dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+String nome = jTF_Nome.getText();
+        String login = jTF_Login.getText();
+        
+        // Se sua senha for um JPasswordField:
+        String senha = new String(jTF_Senha.getPassword());
+        // Se for um JTextField comum, use: String senha = jTF_Senha.getText();
+        
+        // 2. Validar campos vazios
+        if (nome.equals("") || login.equals("") || senha.equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", 
+                    "Vídeo Locadora", JOptionPane.WARNING_MESSAGE);
+        } else {
+            // 3. Conectar
+            Connection con = Conexao.AbrirConexao();
+            FuncionarioDAO sql = new FuncionarioDAO(con);
+            Funcionario a = new Funcionario();
+            
+            // 4. Preencher o objeto
+            a.setNome(nome);
+            a.setLogin(login);
+            a.setSenha(senha);
+            
+            // 5. Inserir no Banco
+            String resultado = sql.Inserir_Funcionario(a);
+            
+            // 6. Mostrar resultado
+            JOptionPane.showMessageDialog(null, resultado);
+            
+            // 7. Limpar campos se deu certo
+            if (resultado.contains("Sucesso")) {
+                jTF_Nome.setText("");
+                jTF_Login.setText("");
+                jTF_Senha.setText(""); // Ou jTF_Senha.setText("");
+            }
+            
+            // 8. Fechar conexão
+            Conexao.FecharConexao(con);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,9 +295,9 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTF_Codigo;
+    private javax.swing.JTextField jTF_Login;
+    private javax.swing.JTextField jTF_Nome;
+    private javax.swing.JPasswordField jTF_Senha;
     // End of variables declaration//GEN-END:variables
 }

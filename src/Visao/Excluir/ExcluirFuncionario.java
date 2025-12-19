@@ -5,6 +5,14 @@
  */
 package Visao.Excluir;
 
+import DAO.Conexao;
+import DAO.FuncionarioDAO;
+import Modelo.Funcionario;
+import Principal.Menu;
+import java.sql.Connection;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno
@@ -31,7 +39,7 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTF_Nome = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
@@ -40,7 +48,7 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel1.setText("Excluir Cliente");
+        jLabel1.setText("Excluir Funcionario");
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -59,7 +67,7 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -68,7 +76,7 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -77,8 +85,18 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
         jButton3.setText("OK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Cancelar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -105,19 +123,19 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,6 +155,60 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+Menu a = new Menu();
+        
+        // 2. Faz a tela aparecer na frente do usuário
+        a.setVisible(true);  
+        dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+String nome = jTF_Nome.getText();
+        
+        // 1. Verifica se digitou algo
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o Nome do Funcionário para excluir!", 
+                    "Vídeo Locadora", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Connection con = Conexao.AbrirConexao();
+            FuncionarioDAO sql = new FuncionarioDAO(con);
+            
+            // 2. Busca o funcionário pelo NOME
+            List<Funcionario> lista = sql.Pesquisar_Nome_Funcionario(nome);
+            
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Nenhum funcionário encontrado com esse nome!", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // 3. Pega o primeiro encontrado
+                Funcionario a = lista.get(0);
+                
+                // 4. Pergunta de Segurança
+                // Mostra o Login também para confirmar que é a pessoa certa
+                int opcao = JOptionPane.showConfirmDialog(null, 
+                        "Encontramos o funcionário:\n" + 
+                        "Nome: " + a.getNome() + "\n" +
+                        "Login: " + a.getLogin() + "\n\n" +
+                        "Tem certeza que deseja excluir?", 
+                        "Confirmação", JOptionPane.YES_NO_OPTION);
+                
+                // 5. Se confirmar, exclui
+                if (opcao == JOptionPane.YES_OPTION) {
+                    String resultado = sql.Excluir_Funcionario(a);
+                    JOptionPane.showMessageDialog(null, resultado);
+                    
+                    // Limpa o campo
+                    if (resultado.contains("Sucesso")) {
+                        jTF_Nome.setText("");
+                    }
+                }
+            }
+            
+            Conexao.FecharConexao(con);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +254,6 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTF_Nome;
     // End of variables declaration//GEN-END:variables
 }

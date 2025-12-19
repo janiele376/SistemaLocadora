@@ -91,7 +91,7 @@
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="campo_codigofuncionario_alterar" min="-2" pref="166" max="-2" attributes="0"/>
+                  <Component id="jTF_CodigoPesquisa" min="-2" pref="166" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="bt_codigofuncionario_alterar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -104,7 +104,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campo_codigofuncionario_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTF_CodigoPesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bt_codigofuncionario_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -121,15 +121,18 @@
             <Property name="text" type="java.lang.String" value="Digite o c&#xf3;digo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_codigofuncionario_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_CodigoPesquisa">
         </Component>
         <Component class="javax.swing.JButton" name="bt_codigofuncionario_alterar">
           <Properties>
             <Property name="text" type="java.lang.String" value="OK"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Padr&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_codigofuncionario_alterarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -158,8 +161,8 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="campo_senha_funcionario_alterar" pref="235" max="32767" attributes="0"/>
-                              <Component id="campo_login_funcionario_alterar" max="32767" attributes="0"/>
+                              <Component id="jTF_Senha" pref="235" max="32767" attributes="0"/>
+                              <Component id="jTF_Login" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -171,11 +174,11 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="campo_codigoid_funcionario_alterar" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="jTF_Codigo" min="-2" pref="97" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="campo_nome_funcionario_alterar" pref="191" max="32767" attributes="0"/>
+                                  <Component id="jTF_Nome" pref="191" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -195,22 +198,22 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_codigoid_funcionario_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Codigo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_nome_funcionario_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Nome" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_login_funcionario_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Login" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_senha_funcionario_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Senha" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -240,13 +243,13 @@
             <Property name="text" type="java.lang.String" value="Senha:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_codigoid_funcionario_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Codigo">
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_nome_funcionario_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Nome">
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_login_funcionario_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Login">
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_senha_funcionario_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Senha">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -300,6 +303,9 @@
               <Dimension value="[70, 20]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_limpar_funcionario_alterarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_alterar_funcionario_alterar">
           <Properties>
@@ -319,6 +325,9 @@
               <Dimension value="[70, 20]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_cancelar_funcionario_alterarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

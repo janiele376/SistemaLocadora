@@ -16,6 +16,7 @@ public class ClienteDAO extends ExecuteSQL {
 
     // 1. INSERIR
     public String Inserir_Cliente(Cliente a) {
+        // 10 interrogações para 10 campos de dados
         String sql = "INSERT INTO cliente VALUES(0,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
@@ -24,11 +25,14 @@ public class ClienteDAO extends ExecuteSQL {
             ps.setString(3, a.getCpf());
             ps.setString(4, a.getTelefone());
             ps.setString(5, a.getEmail());
-            // Se você tiver adicionado Rua, Numero, Bairro, CEP na classe Modelo:
             ps.setString(6, a.getRua());
             ps.setInt(7, a.getNumero());
             ps.setString(8, a.getBairro());
             ps.setString(9, a.getCep());
+            
+            // --- AQUI ESTAVA FALTANDO O DÉCIMO CAMPO ---
+            ps.setString(10, a.getNascimento()); 
+            // -------------------------------------------
             
             if (ps.executeUpdate() > 0) {
                 return "Inserido com Sucesso";
@@ -39,7 +43,6 @@ public class ClienteDAO extends ExecuteSQL {
             return e.getMessage();
         }
     }
-
     // 2. LISTAR
     public List<Cliente> Listar_Cliente() {
         String sql = "SELECT * FROM cliente";

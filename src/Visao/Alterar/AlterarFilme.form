@@ -95,17 +95,17 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="campo_ano_filme_alterar" min="-2" pref="59" max="-2" attributes="0"/>
+                                  <Component id="jTF_Ano" min="-2" pref="59" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="campo_duracao_filme_alterar" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jTF_Duracao" min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="campo_capa_filme_alterar" max="32767" attributes="0"/>
+                                      <Component id="jTF_Capa" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="bt_ok_capa_filme_alterar" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -116,8 +116,8 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="campo_classificacao_filme_alterar" pref="51" max="32767" attributes="0"/>
-                                          <Component id="campo_categoria_filme_alterar" max="32767" attributes="0"/>
+                                          <Component id="jTF_Classificacao" max="32767" attributes="0"/>
+                                          <Component id="jTF_Categoria" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -127,8 +127,8 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="10" max="32767" attributes="0"/>
-                                      <Component id="campo_filme_titulo_alterar" min="-2" pref="212" max="-2" attributes="0"/>
+                                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                                      <Component id="jTF_Titulo" min="-2" pref="212" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -140,7 +140,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campo_codigoid_filme_alterar" min="-2" pref="92" max="-2" attributes="0"/>
+                          <Component id="jTF_Codigo" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="tamanho_capa" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
@@ -155,7 +155,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campo_codigoid_filme_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTF_Codigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tamanho_capa" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -163,31 +163,31 @@
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_filme_titulo_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Titulo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_ano_filme_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Ano" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_duracao_filme_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Duracao" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_categoria_filme_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Categoria" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="box_categoria_filme_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_classificacao_filme_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Classificacao" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="box_classificacao_filme_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="campo_capa_filme_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTF_Capa" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="bt_ok_capa_filme_alterar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -237,19 +237,19 @@
             <Property name="text" type="java.lang.String" value="Dura&#xe7;&#xe3;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_codigoid_filme_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Codigo">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_codigoid_filme_alterarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTF_CodigoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_duracao_filme_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Duracao">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_duracao_filme_alterarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTF_DuracaoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_categoria_filme_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Categoria">
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_classificacao_filme_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Classificacao">
         </Component>
         <Component class="javax.swing.JComboBox" name="box_categoria_filme_alterar">
           <Properties>
@@ -287,9 +287,9 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_filme_titulo_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Titulo">
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_capa_filme_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Capa">
         </Component>
         <Component class="javax.swing.JButton" name="bt_ok_capa_filme_alterar">
           <Properties>
@@ -311,9 +311,9 @@
             <Property name="text" type="java.lang.String" value="Ano:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_ano_filme_alterar">
+        <Component class="javax.swing.JTextField" name="jTF_Ano">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_ano_filme_alterarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTF_AnoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -332,7 +332,7 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="campo_codigofilme_alterar_filme" min="-2" pref="154" max="-2" attributes="0"/>
+                  <Component id="jTF_CodigoPesquisa" min="-2" pref="154" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -345,7 +345,7 @@
                   <EmptySpace pref="21" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campo_codigofilme_alterar_filme" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTF_CodigoPesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -362,7 +362,7 @@
             <Property name="text" type="java.lang.String" value="Digite o c&#xf3;digo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campo_codigofilme_alterar_filme">
+        <Component class="javax.swing.JTextField" name="jTF_CodigoPesquisa">
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
@@ -414,16 +414,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Limpar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_limpar_filme_alterarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_alterar_filme_alterar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alterar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_alterar_filme_alterarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_cancelar_filme_alterar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_cancelar_filme_alterarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

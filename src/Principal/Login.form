@@ -111,8 +111,8 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tfSenha" min="-2" pref="203" max="-2" attributes="0"/>
-                                      <Component id="tfUsuario" min="-2" pref="203" max="-2" attributes="0"/>
+                                      <Component id="jTF_Senha" min="-2" pref="203" max="-2" attributes="0"/>
+                                      <Component id="jTF_Login" min="-2" pref="203" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -132,11 +132,11 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTF_Login" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tfSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTF_Senha" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
@@ -198,15 +198,18 @@
               <Dimension value="[80, 30]"/>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfUsuario">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfUsuarioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfSenha">
+        <Component class="javax.swing.JTextField" name="jTF_Login">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfSenhaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTF_LoginActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTF_Senha">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTF_SenhaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JProgressBar" name="jProgressBar1">

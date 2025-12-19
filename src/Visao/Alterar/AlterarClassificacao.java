@@ -5,6 +5,14 @@
  */
 package Visao.Alterar;
 
+import DAO.ClassificacaoDAO;
+import DAO.Conexao;
+import Modelo.Classificacao;
+import Principal.Menu;
+import java.sql.Connection;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno
@@ -31,15 +39,15 @@ public class AlterarClassificacao extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTF_CodigoPesquisa = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTF_Codigo = new javax.swing.JTextField();
+        jTF_Nome = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTF_Preco = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -72,6 +80,11 @@ public class AlterarClassificacao extends javax.swing.JFrame {
         jLabel2.setText("Código:");
 
         jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -81,7 +94,7 @@ public class AlterarClassificacao extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTF_CodigoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -92,7 +105,7 @@ public class AlterarClassificacao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTF_CodigoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -115,15 +128,15 @@ public class AlterarClassificacao extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTF_Preco, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -132,25 +145,40 @@ public class AlterarClassificacao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTF_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTF_Preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
         jButton4.setText("Alterar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Limpar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Cancelar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -201,6 +229,105 @@ public class AlterarClassificacao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+Menu a = new Menu();
+        
+        // 2. Faz a tela aparecer na frente do usuário
+        a.setVisible(true);  
+        dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+String codigo = jTF_CodigoPesquisa.getText();
+        
+        if (codigo.equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o código para pesquisar!");
+        } else {
+            Connection con = Conexao.AbrirConexao();
+            ClassificacaoDAO sql = new ClassificacaoDAO(con);
+            
+            try {
+                int cod = Integer.parseInt(codigo);
+                
+                // Busca no banco
+                List<Classificacao> lista = sql.Pesquisar_Cod_Classificacao(cod);
+                
+                if (lista.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Classificação não encontrada!", 
+                            "Erro", JOptionPane.ERROR_MESSAGE);
+                    // Limpa se não achar
+                    jTF_Nome.setText("");
+                    jTF_Preco.setText("");
+                } else {
+                    // Preenche os campos (Pega o item 0 da lista)
+                    jTF_Nome.setText(lista.get(0).getNome());
+                    
+                    // Converte o preço (Double) para Texto para mostrar na tela
+                    jTF_Preco.setText(String.valueOf(lista.get(0).getPreco()));
+                }
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "O Código deve ser um número inteiro!", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                Conexao.FecharConexao(con);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+String codigo = jTF_Codigo.getText();
+        String nome = jTF_Nome.getText();
+        String precoTexto = jTF_Preco.getText();
+        
+        if (codigo.equals("") || nome.equals("") || precoTexto.equals("")) {
+            JOptionPane.showMessageDialog(null, "Pesquise pelo código e preencha os campos!", 
+                    "Atenção", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Connection con = Conexao.AbrirConexao();
+            ClassificacaoDAO sql = new ClassificacaoDAO(con);
+            Classificacao a = new Classificacao();
+            
+            try {
+                // Preenche o ID (que não muda)
+                a.setCodigo(Integer.parseInt(codigo));
+                
+                // Preenche os novos dados
+                a.setNome(nome);
+                
+                // Trata o preço (troca vírgula por ponto)
+                double preco = Double.parseDouble(precoTexto.replace(",", "."));
+                a.setPreco(preco);
+                
+                // Manda alterar
+                String resultado = sql.Alterar_Classificacao(a);
+                
+                JOptionPane.showMessageDialog(null, resultado);
+                
+                // Limpa tudo se deu certo
+                if (resultado.contains("Sucesso")) {
+                    jTF_Codigo.setText("");
+                    jTF_Nome.setText("");
+                    jTF_Preco.setText("");
+                }
+                
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Verifique se o Código e o Preço são números válidos!", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                Conexao.FecharConexao(con);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+jTF_Codigo.setText("");
+jTF_CodigoPesquisa.setText("");
+        jTF_Nome.setText("");
+        jTF_Preco.setText("");
+        jTF_Codigo.requestFocus();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,9 +377,9 @@ public class AlterarClassificacao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTF_Codigo;
+    private javax.swing.JTextField jTF_CodigoPesquisa;
+    private javax.swing.JTextField jTF_Nome;
+    private javax.swing.JTextField jTF_Preco;
     // End of variables declaration//GEN-END:variables
 }
