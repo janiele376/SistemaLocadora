@@ -97,6 +97,12 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel8.setText("Email:");
 
+        jTF_Telefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTF_TelefoneActionPerformed(evt);
+            }
+        });
+
         jTF_Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTF_EmailActionPerformed(evt);
@@ -421,6 +427,10 @@ jTF_Nome.setText("");
         jTF_Bairro.setText("");
         jTF_CEP.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTF_TelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_TelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTF_TelefoneActionPerformed
 
     /**
      * @param args the command line arguments

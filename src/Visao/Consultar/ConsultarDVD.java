@@ -5,6 +5,15 @@
  */
 package Visao.Consultar;
 
+import DAO.Conexao;
+import DAO.DVDDAO;
+import Modelo.DVD;
+import Principal.Menu;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Aluno
@@ -27,22 +36,192 @@ public class ConsultarDVD extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        TABELA = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TABELA2 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jTF_Codigo = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        bt_todos = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        TABELA2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Código", "Filme", "Situação", "Preço", "Data"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TABELA2);
+
+        javax.swing.GroupLayout TABELALayout = new javax.swing.GroupLayout(TABELA);
+        TABELA.setLayout(TABELALayout);
+        TABELALayout.setHorizontalGroup(
+            TABELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+        );
+        TABELALayout.setVerticalGroup(
+            TABELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TABELALayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jLabel2.setText("Código:");
+
+        jButton2.setText("OK");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Sair");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        bt_todos.setText("TODOS");
+        bt_todos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_todosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton3)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(TABELA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton2)
+                            .addGap(260, 260, 260)
+                            .addComponent(bt_todos))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2)
+                    .addComponent(bt_todos))
+                .addGap(28, 28, 28)
+                .addComponent(TABELA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+String codigo = jTF_Codigo.getText();
+        
+        Connection con = Conexao.AbrirConexao();
+        DVDDAO sql = new DVDDAO(con);
+        List<DVD> lista = new ArrayList<>();
+        
+        try {
+            if (!codigo.equals("")) {
+                 int cod = Integer.parseInt(codigo);
+                 
+                 // Como o Pesquisar_Cod_DVD geralmente retorna 1 objeto, 
+                 // nós criamos uma lista e adicionamos ele dentro para a tabela funcionar
+                 DVD d = sql.Pesquisar_Cod_DVD(cod);
+                 
+                 if (d != null && d.getCodigo() != 0) {
+                     lista.add(d);
+                 }
+            }
+        } catch (NumberFormatException e) {
+            // Ignora erro se não for número
+        }
+        
+        AtualizarTabela(lista);
+        
+        Conexao.FecharConexao(con);     // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Menu a = new Menu();
+
+        // 2. Faz a tela aparecer na frente do usuário
+        a.setVisible(true);
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void bt_todosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_todosActionPerformed
+Connection con = Conexao.AbrirConexao();
+        DVDDAO sql = new DVDDAO(con);
+        
+        // Pega TODOS os DVDs
+        List<DVD> lista = sql.Listar_DVD();
+        
+        AtualizarTabela(lista);
+        
+        Conexao.FecharConexao(con);      // TODO add your handling code here:
+    }//GEN-LAST:event_bt_todosActionPerformed
+private void AtualizarTabela(List<DVD> lista) {
+        DefaultTableModel tbm = (DefaultTableModel) TABELA2.getModel();
+        
+        // 1. Limpa a tabela
+        while (tbm.getRowCount() > 0) {
+            tbm.removeRow(0);
+        }
+        
+        // 2. Preenche com os dados
+        for (int i = 0; i < lista.size(); i++) {
+            tbm.addRow(new Object[] {
+                lista.get(i).getCodigo(),      // Coluna 0: ID do DVD
+                lista.get(i).getCod_filme(),   // Coluna 1: ID do Filme vinculado
+                lista.get(i).getPreco_compra(),// Coluna 2: Preço
+                lista.get(i).getData_compra(), // Coluna 3: Data da Compra
+                lista.get(i).getSituacao()     // Coluna 4: Disponível/Alugado
+            });
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -79,5 +258,14 @@ public class ConsultarDVD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel TABELA;
+    private javax.swing.JTable TABELA2;
+    private javax.swing.JButton bt_todos;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTF_Codigo;
     // End of variables declaration//GEN-END:variables
 }

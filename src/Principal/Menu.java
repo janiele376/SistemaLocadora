@@ -388,7 +388,8 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void locacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locacaoActionPerformed
-new Locacao.ConsultaLocacao().setVisible(true);       
+new Locacao.ConsultaLocacao().setVisible(true); 
+dispose();
     }//GEN-LAST:event_locacaoActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed

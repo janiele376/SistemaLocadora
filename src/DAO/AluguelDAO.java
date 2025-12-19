@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JOptionPane; 
 
 public class AluguelDAO extends ExecuteSQL {
@@ -74,5 +75,9 @@ public class AluguelDAO extends ExecuteSQL {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro na Locação: " + e.getMessage());
         }
+    }
+
+    public List<Aluguel> Listar_Aluguel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

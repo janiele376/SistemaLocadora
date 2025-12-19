@@ -198,14 +198,14 @@
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTF_Classificacao" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTF_Categoria" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTF_Categoria" max="32767" attributes="0"/>
+                                  <Component id="jTF_Classificacao" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="box_categoria_filme_alterar" alignment="0" pref="160" max="32767" attributes="0"/>
-                                  <Component id="box_classificacao_filme_alterar" alignment="0" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="box_classificacao_filme_alterar" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="box_categoria_filme_alterar" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">

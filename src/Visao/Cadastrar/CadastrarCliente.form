@@ -253,6 +253,9 @@
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="campo_telefone_cliente_cadastrar"/>
           </AccessibilityProperties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTF_TelefoneActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTF_Rua">
           <AccessibilityProperties>
