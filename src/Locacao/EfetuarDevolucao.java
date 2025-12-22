@@ -5,7 +5,12 @@
  */
 package Locacao;
 
+import DAO.Conexao;
+import DAO.FilmeDAO;
+import Modelo.Filme;
 import Principal.Menu;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,7 +51,7 @@ public class EfetuarDevolucao extends javax.swing.JFrame {
         box_categoria_filme_alterar = new javax.swing.JComboBox<>();
         box_classificacao_filme_alterar = new javax.swing.JComboBox<>();
         jTF_Titulo = new javax.swing.JTextField();
-        imagem_capa_filme_alterar = new javax.swing.JLabel();
+        jTF_Capa = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jTF_Ano = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -118,7 +123,7 @@ public class EfetuarDevolucao extends javax.swing.JFrame {
             }
         });
 
-        imagem_capa_filme_alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/dvd_video_alterar_filme.jpeg"))); // NOI18N
+        jTF_Capa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/dvd_video_alterar_filme.jpeg"))); // NOI18N
 
         jLabel12.setText("Horas:");
 
@@ -175,7 +180,7 @@ public class EfetuarDevolucao extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(imagem_capa_filme_alterar, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addComponent(jTF_Capa, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                 .addGap(4, 4, 4))
         );
         jPanel3Layout.setVerticalGroup(
@@ -214,7 +219,7 @@ public class EfetuarDevolucao extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(imagem_capa_filme_alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTF_Capa, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
 
@@ -284,7 +289,7 @@ public class EfetuarDevolucao extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -448,7 +453,6 @@ public class EfetuarDevolucao extends javax.swing.JFrame {
     private javax.swing.JButton bt_alterar_filme_alterar;
     private javax.swing.JButton bt_cancelar_filme_alterar;
     private javax.swing.JButton bt_limpar_filme_alterar;
-    private javax.swing.JLabel imagem_capa_filme_alterar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
@@ -463,6 +467,7 @@ public class EfetuarDevolucao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTF_Ano;
+    private javax.swing.JLabel jTF_Capa;
     private javax.swing.JTextField jTF_Categoria;
     private javax.swing.JTextField jTF_Classificacao;
     private javax.swing.JTextField jTF_Codigo;

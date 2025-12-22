@@ -42,7 +42,7 @@ public class ConsultaLocacao extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TABELA2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTF_Codigo = new javax.swing.JTextField();
+        jTF_CodAluguel = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTF_CodDVD = new javax.swing.JTextField();
@@ -136,7 +136,7 @@ public class ConsultaLocacao extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTF_CodAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
                         .addGap(30, 30, 30)
@@ -181,7 +181,7 @@ public class ConsultaLocacao extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTF_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTF_CodAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2)
                             .addComponent(jLabel1))))
                 .addGap(10, 10, 10)
@@ -362,8 +362,8 @@ String codigo = jTF_CodCliente.getText();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTF_CodAluguel;
     private javax.swing.JTextField jTF_CodCliente;
     private javax.swing.JTextField jTF_CodDVD;
-    private javax.swing.JTextField jTF_Codigo;
     // End of variables declaration//GEN-END:variables
 }

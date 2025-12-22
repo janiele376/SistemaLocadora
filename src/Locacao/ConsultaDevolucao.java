@@ -5,7 +5,10 @@
  */
 package Locacao;
 
+import Modelo.Aluguel;
 import Principal.Menu;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -155,7 +158,7 @@ public class ConsultaDevolucao extends javax.swing.JFrame {
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 private void AtualizarTabela(List<Aluguel> lista) {
-        DefaultTableModel tbm = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel tbm = (DefaultTableModel) TABELA2.getModel();
         while (tbm.getRowCount() > 0) {
             tbm.removeRow(0);
         }
